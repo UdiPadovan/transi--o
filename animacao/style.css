@@ -1,0 +1,111 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 32px;
+}
+
+/* Container da Carta */
+.card {
+  position: relative;
+  width: 180px;
+  height: 260px;
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+/* Classes acionadas pelos keyframes */
+.card.animar-virar {
+  animation: girarParaVerso 0.6s forwards;
+}
+
+.card.animar-desvirar {
+  animation: girarParaFrente 0.6s forwards;
+}
+
+/* Keyframes de Rotação */
+@keyframes girarParaVerso {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(180deg);
+  }
+}
+
+@keyframes girarParaFrente {
+  from {
+    transform: rotateY(180deg);
+  }
+  to {
+    transform: rotateY(0deg);
+  }
+}
+
+/* Faces */
+.card-face {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: #ffffff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-front {
+  background-color: #2563eb;
+  border: 4px solid #1d4ed8;
+}
+
+.card-back {
+  background-color: #dc2626;
+  border: 4px solid #b91c1c;
+  transform: rotateY(180deg);
+}
+
+/* Botões */
+.button-group {
+  display: flex;
+  gap: 16px;
+}
+
+button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #1e293b;
+  color: #ffffff;
+  transition: opacity 0.2s;
+}
+
+button:hover {
+  opacity: 0.85;
+}
